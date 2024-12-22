@@ -1,0 +1,320 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>ASDAP | Docs</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta
+        content="Nazox is a fully featured premium Angular 17 admin dashboard template built on top of awesome Bootstrap 5.1.0"
+        name="description" />
+    <meta content="ThemesDesign" name="author" />
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="assets/images/favicon.ico">
+
+    <!-- Bootstrap Css -->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <!-- Icons Css -->
+    <link href="assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+    <!-- App Css-->
+    <link href="assets/css/app.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/workflow.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/code-button.css" rel="stylesheet" type="text/css" />
+
+</head>
+
+<body data-sidebar="dark">
+
+    <!-- Begin page -->
+    <!-- Begin page -->
+    <div id="layout-wrapper">
+
+        <header id="page-topbar">
+            <div class="navbar-header">
+                <div class="d-flex">
+                    <!-- LOGO -->
+                    <div class="navbar-brand-box">
+                        <a href="index.html" class="logo logo-light">
+                            <span class="logo-sm">
+                                <img src="assets/images/logo-sm-light.png" alt="" height="22">
+                            </span>
+                            <span class="logo-lg">
+                                <img src="assets/images/logo-light.png" alt="" height="20">
+                            </span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- ========== Left Sidebar Start ========== -->
+        <div class="vertical-menu">
+            <div data-simplebar class="h-100">
+                <!--- Sidemenu -->
+                <div id="sidebar-menu">
+                    <ul class="metismenu list-unstyled" id="side-menu">
+                        <li class="menu-title">Docs</li>
+                        <li>
+                            <a href="index.html" class="waves-effect">
+                                <i class="mdi mdi-file-document-box-outline"></i>
+                                <span>Introduction</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="processing-request-generic.html" class="waves-effect">
+                                <i class="mdi mdi-file-document-box-outline"></i>
+                                <span>Process Request - Generic</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="process-request-nodejs.html" class="waves-effect">
+                                <i class="mdi mdi-file-document-box-outline"></i>
+                                <span>Process Request - Node.js</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="directory-structure.html" class="waves-effect">
+                                <i class="mdi mdi-file-document-box-outline"></i>
+                                <span>Directory Structure</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="corpdesk-crud.html" class="waves-effect">
+                                <i class="mdi mdi-file-document-box-outline"></i>
+                                <span>Module CRUD</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- Left Sidebar End -->
+
+        <!-- ============================================================== -->
+        <!-- Start right Content here -->
+        <!-- ============================================================== -->
+        <div class="main-content">
+            <div class="page-content">
+                <div class="container-fluid">
+                    <!-- start page title -->
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="page-title-box d-flex align-items-center justify-content-between">
+                                <h4 class="mb-0 font-size-18">API Request Processing</h4>
+                                <div class="page-title-right">
+                                    <ol class="breadcrumb m-0">
+                                        <li class="breadcrumb-item"><a href="javascript: void(0);">API</a></li>
+                                        <li class="breadcrumb-item">Directory Structure</li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end page title -->
+
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="p-lg-3">
+                                <h5>Modules in Corpdesk: Directory Structure and Naming Conventions</h5>
+                    
+                                <!-- Introduction -->
+                                <p>
+                                    Corpdesk is designed with a structured directory and file naming convention to ensure scalability,
+                                    consistency, and ease of migration between systems. Understanding these conventions is essential for
+                                    developers working with Corpdesk modules, which include controllers, models, and services.
+                                </p>
+                    
+                                <!-- Directory and File Naming Structure -->
+                                <h6>Directory and File Naming Structure</h6>
+                                <p>
+                                    The core directory structure for Corpdesk resides within the <code>CdApi</code> directory under the
+                                    <code>src</code> folder. This directory is divided into two primary folders:
+                                </p>
+                                <ul>
+                                    <li>
+                                        <strong><code>app</code>:</strong> Contains application-specific modules.
+                                    </li>
+                                    <li>
+                                        <strong><code>sys</code>:</strong> Contains system-level modules and utilities.
+                                    </li>
+                                </ul>
+                                <p>
+                                    Each module within these directories maintains a consistent structure with folders for
+                                    <code>controllers</code>, <code>models</code>, and <code>services</code>. Developers can add extra
+                                    folders as necessary, but the core structure must remain intact.
+                                </p>
+                                <div class="code-container">
+                                    <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+                                    <pre><code class="language-text">
+                    ├── CdApi
+                    │   ├── app
+                    │   │   ├── cd-geo
+                    │   │   │   ├── controllers
+                    │   │   │   ├── models
+                    │   │   │   ├── services
+                    │   │   │   ├── notes
+                    │   │   ├── cd-hrm
+                    │   │   │   ├── controllers
+                    │   │   │   ├── models
+                    │   │   │   ├── services
+                    │   ├── sys
+                    │   │   ├── base
+                    │   │   ├── comm
+                    │   │   ├── moduleman
+                    │   │   ├── scheduler
+                    │   │   ├── utils
+                                    </code></pre>
+                                </div>
+                    
+                                <!-- File Naming Conventions -->
+                                <h6>File Naming Conventions</h6>
+                                <p>
+                                    File naming conventions are crucial for ensuring consistency, especially when migrating Corpdesk
+                                    installations between systems. Key points to note:
+                                </p>
+                                <ul>
+                                    <li>
+                                        All file and directory names are in lowercase to avoid compatibility issues on case-sensitive
+                                        file systems.
+                                    </li>
+                                    <li>
+                                        The naming convention for files reflects their purpose and type:
+                                        <ul>
+                                            <li>
+                                                <strong>Controllers:</strong> File names follow the format
+                                                <code>{module-name}.controller.ts</code>.
+                                            </li>
+                                            <li>
+                                                <strong>Models:</strong> File names follow the format <code>{module-name}.model.ts</code>.
+                                            </li>
+                                            <li>
+                                                <strong>Services:</strong> File names follow the format
+                                                <code>{module-name}.service.ts</code>.
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                                <p>
+                                    Below is an example of the <code>cd-geo</code> module directory with the naming conventions applied:
+                                </p>
+                                <div class="code-container">
+                                    <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+                                    <pre><code class="language-text">
+                                │   │   ├── cd-geo
+                                │   │   │   ├── controllers
+                                │   │   │   │   ├── cd-geo.controller.ts
+                                │   │   │   │   ├── cd-geo-location.controller.ts
+                                │   │   │   │   ├── cd-geo-physical-type.controller.ts
+                                │   │   │   │   ├── cd-geo-political-type.controller.ts
+                                │   │   │   │   ├── cd-geo-proximity.controller.ts
+                                │   │   │   │   ├── cd-geo-track.controller.ts
+                                │   │   │   │   └── cd-geo-type.controller.ts
+                                │   │   │   ├── models
+                                │   │   │   │   ├── cd-geo-location.model.ts
+                                │   │   │   │   ├── cd-geo.model.ts
+                                │   │   │   │   ├── cd-geo-physical-type.model.ts
+                                │   │   │   │   ├── cd-geo-political-type.model.ts
+                                │   │   │   │   ├── cd-geo-proximity.model.ts
+                                │   │   │   │   ├── cd-geo-track.model.ts
+                                │   │   │   │   ├── cd-geo-type.model.ts
+                                │   │   │   │   └── cd-geo-view.model.ts
+                                │   │   │   ├── notes
+                                │   │   │   └── services
+                                │   │   │       ├── cd-geo-location.service.ts
+                                │   │   │       ├── cd-geo-physical-type.service.ts
+                                │   │   │       ├── cd-geo-political-type.service.ts
+                                │   │   │       ├── cd-geo-proximity.service.ts
+                                │   │   │       ├── cd-geo.service.ts
+                                │   │   │       ├── cd-geo-track.service.ts
+                                │   │   │       └── cd-geo-type.service.ts
+                                    </code></pre>
+                                </div>
+                                <p>
+                                    It is worth noting that all the file namings are mapped to specific entities in the module and are also reflected in the database as tables. For example, the <code>cd-geo</code> module has seven entities:
+                                </p>
+                                <ul>
+                                    <li><strong>Root:</strong> <code>cd-geo</code></li>
+                                    <li><strong>Root Type:</strong> <code>cd-geo-type</code></li>
+                                    <li><strong>Location:</strong> <code>cd-geo-location</code></li>
+                                    <li><strong>Physical Type:</strong> <code>cd-geo-physical-type</code></li>
+                                    <li><strong>Political Type:</strong> <code>cd-geo-political-type</code></li>
+                                    <li><strong>Proximity:</strong> <code>cd-geo-proximity</code></li>
+                                    <li><strong>Track:</strong> <code>cd-geo-track</code></li>
+                                </ul>
+                                <p>
+                                    The naming convention appends the utility name to the module name, ensuring a direct mapping between the module's functionality and its representation in the database tables. Each utility is represented by a table in the database, maintaining a consistent relationship across all module folders, including <code>controllers</code>, <code>models</code>, and <code>services</code>.
+                                </p>
+                                <p>
+                                    These conventions provide an avenue for consistency, interoperability, and integration with automated processes, including AI-assisted development. The alignment between the directory structure, file naming, and database schema is a critical factor in enabling streamlined and scalable development workflows.
+                                </p>
+                                
+                    
+                                <!-- Importance of Consistency -->
+                                <h6>Importance of Consistency</h6>
+                                <p>
+                                    The structured directory and naming conventions serve several purposes:
+                                </p>
+                                <ul>
+                                    <li>
+                                        <strong>Migratability:</strong> Ensures seamless movement of Corpdesk installations across
+                                        environments with different case sensitivity in file systems.
+                                    </li>
+                                    <li>
+                                        <strong>Scalability:</strong> Allows easy addition of new modules and extensions without disrupting
+                                        existing code.
+                                    </li>
+                                    <li>
+                                        <strong>Interoperability:</strong> The standardized structure and naming conventions enable seamless integration with tools, frameworks, and automation processes, making it easier for multiple teams or systems to work together efficiently.
+                                    </li>
+                                    
+                                    <li>
+                                        <strong>Readability:</strong> Maintains clarity for developers navigating the project structure.
+                                    </li>
+                                </ul>
+                    
+                                <!-- Next Steps -->
+                                <h6>Next Steps</h6>
+                                <p>
+                                    With the directory structure and naming conventions established, the next section will explore the roles
+                                    of controllers, services, and models within a module, including their intra- and inter-module
+                                    interactions.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- end of card -->
+                </div>
+            </div>
+        </div>
+        <script src="assets/libs/jquery/jquery.min.js"></script>
+        <script src="assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+    </div>
+    <!-- END layout-wrapper -->
+
+    <!-- JAVASCRIPT -->
+    <script src="assets/libs/jquery/jquery.min.js"></script>
+    <script src="assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/libs/metismenu/metisMenu.min.js"></script>
+    <script src="assets/libs/simplebar/simplebar.min.js"></script>
+    <script src="assets/libs/node-waves/waves.min.js"></script>
+
+    <!-- Prism CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.28.0/themes/prism.min.css" rel="stylesheet">
+    <!-- Prism JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.28.0/prism.min.js"></script>
+
+    <!-- Highlight.js CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/default.min.css" rel="stylesheet">
+    <!-- Highlight.js JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+
+
+
+    <script src="assets/js/app.js"></script>
+    <script src="assets/js/code-button.js"></script>
+
+</body>
+
+</html>

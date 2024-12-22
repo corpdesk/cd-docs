@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>ASDAP | Docs</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta
+        content="Nazox is a fully featured premium Angular 17 admin dashboard template built on top of awesome Bootstrap 5.1.0"
+        name="description" />
+    <meta content="ThemesDesign" name="author" />
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="assets/images/favicon.ico">
+
+    <!-- Bootstrap Css -->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <!-- Icons Css -->
+    <link href="assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+    <!-- App Css-->
+    <link href="assets/css/app.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/workflow.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/code-button.css" rel="stylesheet" type="text/css" />
+
+</head>
+
+<body data-sidebar="dark">
+
+    <!-- Begin page -->
+    <!-- Begin page -->
+    <div id="layout-wrapper">
+
+        <header id="page-topbar">
+            <div class="navbar-header">
+                <div class="d-flex">
+                    <!-- LOGO -->
+                    <div class="navbar-brand-box">
+                        <a href="index.html" class="logo logo-light">
+                            <span class="logo-sm">
+                                <img src="assets/images/logo-sm-light.png" alt="" height="22">
+                            </span>
+                            <span class="logo-lg">
+                                <img src="assets/images/logo-light.png" alt="" height="20">
+                            </span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- ========== Left Sidebar Start ========== -->
+        <div class="vertical-menu">
+            <div data-simplebar class="h-100">
+                <!--- Sidemenu -->
+                <div id="sidebar-menu">
+                    <ul class="metismenu list-unstyled" id="side-menu">
+                        <li class="menu-title">Docs</li>
+                        <li>
+                            <a href="index.html" class="waves-effect">
+                                <i class="mdi mdi-file-document-box-outline"></i>
+                                <span>Introduction</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="processing-request-generic.html" class="waves-effect">
+                                <i class="mdi mdi-file-document-box-outline"></i>
+                                <span>Process Request - Generic</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="process-request-nodejs.html" class="waves-effect">
+                                <i class="mdi mdi-file-document-box-outline"></i>
+                                <span>Process Request - Node.js</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="directory-structure.html" class="waves-effect">
+                                <i class="mdi mdi-file-document-box-outline"></i>
+                                <span>Directory Structure</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="corpdesk-crud.html" class="waves-effect">
+                                <i class="mdi mdi-file-document-box-outline"></i>
+                                <span>Module CRUD</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- Left Sidebar End -->
+
+        <!-- ============================================================== -->
+        <!-- Start right Content here -->
+        <!-- ============================================================== -->
+        <div class="main-content">
+            <div class="page-content">
+                <div class="container-fluid">
+                    <!-- start page title -->
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="page-title-box d-flex align-items-center justify-content-between">
+                                <h4 class="mb-0 font-size-18">API Request Processing</h4>
+                                <div class="page-title-right">
+                                    <ol class="breadcrumb m-0">
+                                        <li class="breadcrumb-item"><a href="javascript: void(0);">API</a></li>
+                                        <li class="breadcrumb-item">CRUD Operations</li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end page title -->
+
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="p-lg-3">
+                                <h5>Understanding CRUD Operations in Corpdesk Modules</h5>
+                    
+                                <p>
+                                    Corpdesk modules follow a structured process to perform CRUD operations, ensuring consistency and efficiency. Below is an in-depth explanation of how CRUD operations work, using the <code>CdGeoLocationController</code> and its related service and model as an example.
+                                </p>
+                    
+                                <h6>Step 1: The Controller - Entry Point for CRUD Requests</h6>
+                                <p>
+                                    The <code>Create()</code> method in the <code>CdGeoLocationController</code> serves as the entry point for creating a new record. The method:
+                                </p>
+                                <ul>
+                                    <li>Receives the HTTP request and validates its format.</li>
+                                    <li>Delegates the creation process to <code>CdGeoLocationService</code> by calling its <code>create(req, res)</code> method.</li>
+                                </ul>
+                                <div class="code-container">
+                                    <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+                                    <pre><code class="language-typescript">
+                    async Create(req, res) {
+                        try {
+                            await this.svCdGeoLocation.create(req, res);
+                        } catch (e) {
+                            await this.b.serviceErr(req, res, e, 'CdGeoLocationController:Create');
+                        }
+                    }
+                                    </code></pre>
+                                </div>
+                    
+                                <h6>Step 2: The Service - Business Logic Layer</h6>
+                                <p>
+                                    The <code>CdGeoLocationService</code> processes the request by:
+                                </p>
+                                <ul>
+                                    <li>Validating the request payload against required fields and duplication rules.</li>
+                                    <li>Preparing a <code>serviceInput</code> object containing the model, document name, and data source.</li>
+                                    <li>Delegating the actual creation operation to <code>BaseService.create()</code>.
+                                </ul>
+                                <p>The <code>create</code> method also updates the application state and sends a response back to the client.</p>
+                                <div class="code-container">
+                                    <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+                                    <pre><code class="language-typescript">
+                    async create(req, res) {
+                        if (await this.validateCreate(req, res)) {
+                            const serviceInput = {
+                                serviceModel: CdGeoLocationModel,
+                                modelName: "CdGeoLocationModel",
+                                serviceModelInstance: this.serviceModel,
+                                docName: 'Create CdGeoLocation',
+                                dSource: 1,
+                            };
+                            const respData = await this.b.create(req, res, serviceInput);
+                            this.b.setAppState(true, this.b.i);
+                            this.b.cdResp.data = respData;
+                            await this.b.respond(req, res);
+                        } else {
+                            await this.b.respond(req, res);
+                        }
+                    }
+                                    </code></pre>
+                                </div>
+                    
+                                <h6>Step 3: The Model - Database Representation</h6>
+                                <p>
+                                    The <code>CdGeoLocationModel</code> maps to the <code>cd_geo_location</code> table in the database. It defines the schema and ensures consistency between application logic and database structure.
+                                </p>
+                                <div class="code-container">
+                                    <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+                                    <pre><code class="language-typescript">
+                    @Entity({
+                        name: 'cd_geo_location',
+                        synchronize: false
+                    })
+                    export class CdGeoLocationModel {
+                        @PrimaryGeneratedColumn({ name: 'cd_geo_location_id' })
+                        cdGeoLocationId?: number;
+                    
+                        @Column({ name: 'cd_geo_location_name', length: 50 })
+                        cdGeoLocationName: string;
+                    
+                        @Column({ name: 'cd_geo_location_code', length: 10 })
+                        cdGeoLocationCode: string;
+                        
+                        ...
+                    }
+                                    </code></pre>
+                                </div>
+                    
+                                <h6>Step 4: The BaseService - Centralized CRUD Operations</h6>
+                                <p>
+                                    The <code>BaseService</code> provides generic methods for CRUD operations. For the <code>Create</code> operation, it:
+                                </p>
+                                <ul>
+                                    <li>Uses the <code>serviceInput</code> to initialize the appropriate repository.</li>
+                                    <li>Executes the creation operation using TypeORM's repository methods.</li>
+                                    <li>Handles error logging and response generation.</li>
+                                </ul>
+                                <div class="code-container">
+                                    <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+                                    <pre><code class="language-typescript">
+                    async create(req, res, serviceInput) {
+                        try {
+                            const repository = this.getRepository(serviceInput.serviceModel);
+                            const result = await repository.save(serviceInput.serviceModelInstance);
+                            return result;
+                        } catch (e) {
+                            this.serviceErr(req, res, e, 'BaseService:create');
+                        }
+                    }
+                                    </code></pre>
+                                </div>
+                    
+                                <h6>Conclusion</h6>
+                                <p>
+                                    The CRUD operations in Corpdesk modules are a collaborative process between controllers, services, models, and the <code>BaseService</code>. This modular design ensures consistency, maintainability, and scalability. By adhering to this structure, developers can create robust modules and extend functionality seamlessly.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- end of card -->
+                </div>
+            </div>
+        </div>
+        <script src="assets/libs/jquery/jquery.min.js"></script>
+        <script src="assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+    </div>
+    <!-- END layout-wrapper -->
+
+    <!-- JAVASCRIPT -->
+    <script src="assets/libs/jquery/jquery.min.js"></script>
+    <script src="assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/libs/metismenu/metisMenu.min.js"></script>
+    <script src="assets/libs/simplebar/simplebar.min.js"></script>
+    <script src="assets/libs/node-waves/waves.min.js"></script>
+
+    <!-- Prism CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.28.0/themes/prism.min.css" rel="stylesheet">
+    <!-- Prism JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.28.0/prism.min.js"></script>
+
+    <!-- Highlight.js CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/default.min.css" rel="stylesheet">
+    <!-- Highlight.js JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+
+
+
+    <script src="assets/js/app.js"></script>
+    <script src="assets/js/code-button.js"></script>
+
+</body>
+
+</html>
