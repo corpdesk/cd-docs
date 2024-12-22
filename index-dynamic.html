@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>CORPDESK | Docs</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta
+        content="Nazox is a fully featured premium Angular 17 admin dashboard template built on top of awesome Bootstrap 5.1.0"
+        name="description" />
+    <meta content="ThemesDesign" name="author" />
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="assets/images/favicon.ico">
+
+    <!-- Bootstrap Css -->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <!-- Icons Css -->
+    <link href="assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+    <!-- App Css-->
+    <link href="assets/css/app.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/workflow.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/code-button.css" rel="stylesheet" type="text/css" />
+
+</head>
+
+<body data-sidebar="dark">
+
+    <!-- Begin page -->
+    <!-- Begin page -->
+    <div id="layout-wrapper">
+
+        <header id="page-topbar">
+            <div class="navbar-header">
+                <div class="d-flex">
+                    <!-- LOGO -->
+                    <div class="navbar-brand-box">
+                        <a href="index.html" class="logo logo-light">
+                            <span class="logo-sm">
+                                <img src="assets/images/logo-sm-light.png" alt="" height="22">
+                            </span>
+                            <span class="logo-lg">
+                                <img src="assets/images/logo-light.png" alt="" height="20">
+                            </span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- ========== Left Sidebar Start ========== -->
+        <div class="vertical-menu">
+            <div data-simplebar class="h-100">
+                <!--- Sidemenu -->
+                <div id="sidebar-menu">
+                    <ul class="metismenu list-unstyled" id="side-menu">
+                        <li class="menu-title">Docs</li>
+                        <li>
+                            <a href="index.html" class="waves-effect">
+                                <i class="mdi mdi-file-document-box-outline"></i>
+                                <span>Introduction</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="processing-request-generic.html" class="waves-effect">
+                                <i class="mdi mdi-file-document-box-outline"></i>
+                                <span>Process Request - Generic</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="process-request-nodejs.html" class="waves-effect">
+                                <i class="mdi mdi-file-document-box-outline"></i>
+                                <span>Process Request - Node.js</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="directory-structure.html" class="waves-effect">
+                                <i class="mdi mdi-file-document-box-outline"></i>
+                                <span>Directory Structure</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="corpdesk-crud.html" class="waves-effect">
+                                <i class="mdi mdi-file-document-box-outline"></i>
+                                <span>Module CRUD</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- Left Sidebar End -->
+
+        <!-- ============================================================== -->
+        <!-- Start right Content here -->
+        <!-- ============================================================== -->
+        <div class="main-content">
+            <div class="page-content">
+                <div class="container-fluid">
+                    <!-- start page title -->
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="page-title-box d-flex align-items-center justify-content-between">
+                                <h4 class="mb-0 font-size-18">Corpdesk API Documentation</h4>
+                                <div class="page-title-right">
+                                    <ol class="breadcrumb m-0">
+                                        <li class="breadcrumb-item"><a href="javascript: void(0);">API</a></li>
+                                        <li class="breadcrumb-item active">Introduction</li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end page title -->
+
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="p-lg-3">
+                                <h5>Introduction</h5>
+                                <p>Corpdesk represents a cutting-edge framework for building scalable, modular, and
+                                    highly automated applications. With its unique design philosophy, Corpdesk ensures
+                                    consistency, simplicity, and flexibility, enabling both human developers and AI
+                                    tools to interact seamlessly with its architecture. This document outlines the
+                                    foundational principles, operational modes, and core components of the Corpdesk
+                                    backend, focusing on its API execution strategy.</p>
+
+                                <h5>Design Philosophy</h5>
+                                <ul>
+                                    <li><strong>Automation-First Approach:</strong> Corpdesk is designed to maximize
+                                        automation while minimizing dependencies.</li>
+                                    <li><strong>Language-Agnostic Implementation:</strong> Designs can be transformed
+                                        into multiple programming languages.</li>
+                                    <li><strong>Consistency and Simplicity:</strong> Centralized API interactions
+                                        promote maintainability.</li>
+                                    <li><strong>Uniform Entry Points:</strong> The API uses a single entry point with
+                                        all requests formatted as JSON POST data.</li>
+                                </ul>
+
+                                <h5>Operational Modes</h5>
+                                <ul>
+                                    <li>No Client-Side Routes: All calls are sent to a single endpoint.</li>
+                                    <li>Standardized API Calls: Requests are structured using standardized interfaces.
+                                    </li>
+                                    <li>Service Initialization: Services use <code>new()</code> without dependency
+                                        injection.</li>
+                                    <li>Environment-Aware Execution: Configurations for CORS, SSL, and database
+                                        connections.</li>
+                                </ul>
+
+                                <h5>Core Interfaces</h5>
+                                <h6>ICdRequest</h6>
+                                <p>The <code>ICdRequest</code> interface standardizes how requests are structured:</p>
+                                <ul>
+                                    <li><code>ctx:</code> Specifies the target module's location.</li>
+                                    <li><code>m:</code> Module name.</li>
+                                    <li><code>c:</code> Controller name.</li>
+                                    <li><code>a:</code> Action to execute within the controller.</li>
+                                    <li><code>dat:</code> Payload containing command settings.</li>
+                                </ul>
+                                <div class="code-container">
+                                    <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+                                    <pre><code class="language-json">
+    // JSON request example:
+    {
+        "ctx": "Sys",
+        "m": "User",
+        "c": "User",
+        "a": "Login",
+        "dat": {
+            "f_vals": [
+                {
+                    "data": {
+                        "userName": "user-name",
+                        "password": "*******"
+                    }
+                }
+            ],
+            "token": null
+        },
+        "args": null
+    }
+                                    </code></pre>
+                                </div>
+
+                                <h6>ICdResponse</h6>
+                                <p>The <code>ICdResponse</code> interface ensures consistency in responses:</p>
+                                <ul>
+                                    <li><code>app_state:</code> Contains success status, error messages, and session
+                                        data.</li>
+                                    <li><code>data:</code> Holds the actual response payload.</li>
+                                </ul>
+
+                                <h5>Backend Workflow</h5>
+                                <ul>
+                                    <li><strong>Initialization:</strong> The entry point launches the application and
+                                        executes runtime configurations.</li>
+                                    <li><strong>Request Handling:</strong> Requests are processed, validated, executed,
+                                        and responded to with structured outputs.</li>
+                                </ul>
+
+                                <h5>Future Enhancements</h5>
+                                <ul>
+                                    <li>Refinements to Anti-Patterns</li>
+                                    <li>AI-Driven Module Creation</li>
+                                    <li>Multi-Language Support</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- end of card body -->
+                    </div>
+                    <!-- end of card -->
+                </div>
+            </div>
+        </div>
+        <script src="assets/libs/jquery/jquery.min.js"></script>
+        <script src="assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+    </div>
+    <!-- END layout-wrapper -->
+
+    <!-- JAVASCRIPT -->
+    <script src="assets/libs/jquery/jquery.min.js"></script>
+    <script src="assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/libs/metismenu/metisMenu.min.js"></script>
+    <script src="assets/libs/simplebar/simplebar.min.js"></script>
+    <script src="assets/libs/node-waves/waves.min.js"></script>
+
+    <!-- Prism CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.28.0/themes/prism.min.css" rel="stylesheet">
+    <!-- Prism JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.28.0/prism.min.js"></script>
+
+    <!-- Highlight.js CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/default.min.css" rel="stylesheet">
+    <!-- Highlight.js JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+
+
+
+    <script src="assets/js/app.js"></script>
+    <script src="assets/js/code-button.js"></script>
+
+</body>
+
+</html>

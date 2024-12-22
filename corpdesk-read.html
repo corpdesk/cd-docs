@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>CORPDESK | Docs</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      content="Nazox is a fully featured premium Angular 17 admin dashboard template built on top of awesome Bootstrap 5.1.0"
+      name="description"
+    />
+    <meta content="ThemesDesign" name="author" />
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="assets/images/favicon.ico" />
+
+    <!-- Bootstrap Css -->
+    <link
+      href="assets/css/bootstrap.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <!-- Icons Css -->
+    <link href="assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+    <!-- App Css-->
+    <link href="assets/css/app.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/workflow.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/code-button.css" rel="stylesheet" type="text/css" />
+  </head>
+
+  <body data-sidebar="dark">
+    <!-- Begin page -->
+    <!-- Begin page -->
+    <div id="layout-wrapper">
+      <header id="page-topbar">
+        <div class="navbar-header">
+          <div class="d-flex">
+            <!-- LOGO -->
+            <div class="navbar-brand-box">
+              <a href="index.html" class="logo logo-light">
+                <span class="logo-sm">
+                  <img
+                    src="assets/images/logo-sm-light.png"
+                    alt=""
+                    height="22"
+                  />
+                </span>
+                <span class="logo-lg">
+                  <img src="assets/images/logo-light.png" alt="" height="20" />
+                </span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- ========== Left Sidebar Start ========== -->
+      <div class="vertical-menu">
+        <div data-simplebar class="h-100">
+          <!--- Sidemenu -->
+          <div id="sidebar-menu">
+            <ul class="metismenu list-unstyled" id="side-menu">
+              <li class="menu-title">Docs</li>
+              <li>
+                <a href="index.html" class="waves-effect">
+                  <i class="mdi mdi-file-document-box-outline"></i>
+                  <span>Introduction</span>
+                </a>
+              </li>
+              <li>
+                <a href="processing-request-generic.html" class="waves-effect">
+                  <i class="mdi mdi-file-document-box-outline"></i>
+                  <span>Process Request - Generic</span>
+                </a>
+              </li>
+              <li>
+                <a href="process-request-nodejs.html" class="waves-effect">
+                  <i class="mdi mdi-file-document-box-outline"></i>
+                  <span>Process Request - Node.js</span>
+                </a>
+              </li>
+              <li>
+                <a href="directory-structure.html" class="waves-effect">
+                  <i class="mdi mdi-file-document-box-outline"></i>
+                  <span>Directory Structure</span>
+                </a>
+              </li>
+              <li>
+                <a href="corpdesk-crud.html" class="waves-effect">
+                  <i class="mdi mdi-file-document-box-outline"></i>
+                  <span>Module CRUD</span>
+                </a>
+              </li>
+              <li>
+                <a href="corpdesk-create.html" class="waves-effect">
+                  <i class="mdi mdi-file-document-box-outline"></i>
+                  <span>Module create</span>
+                </a>
+              </li>
+              <li>
+                <a href="corpdesk-read.html" class="waves-effect">
+                  <i class="mdi mdi-file-document-box-outline"></i>
+                  <span>Module read</span>
+                </a>
+              </li>
+              <li>
+                <a href="corpdesk-update.html" class="waves-effect">
+                  <i class="mdi mdi-file-document-box-outline"></i>
+                  <span>Module update</span>
+                </a>
+              </li>
+              <li>
+                <a href="corpdesk-delete.html" class="waves-effect">
+                  <i class="mdi mdi-file-document-box-outline"></i>
+                  <span>Module delete</span>
+                </a>
+              </li>
+              <li>
+                <a href="sys-and-app.html" class="waves-effect">
+                  <i class="mdi mdi-file-document-box-outline"></i>
+                  <span>Modules Organization</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!-- Left Sidebar End -->
+
+      <!-- ============================================================== -->
+      <!-- Start right Content here -->
+      <!-- ============================================================== -->
+      <div class="main-content">
+        <div class="page-content">
+          <div class="container-fluid">
+            <!-- start page title -->
+            <div class="row">
+              <div class="col-12">
+                <div
+                  class="page-title-box d-flex align-items-center justify-content-between"
+                >
+                  <h4 class="mb-0 font-size-18">API Request Processing</h4>
+                  <div class="page-title-right">
+                    <ol class="breadcrumb m-0">
+                      <li class="breadcrumb-item">
+                        <a href="javascript: void(0);">API</a>
+                      </li>
+                      <li class="breadcrumb-item">CRUD Operations</li>
+                    </ol>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- end page title -->
+
+            <div class="card">
+              <div class="card-body">
+                <div class="p-lg-3">
+                  <h5>Understanding the Read Operation in Corpdesk Modules</h5>
+
+                  <p>
+                    The <code>Read</code> operation allows the retrieval of data
+                    from the database. Below is an explanation of the steps
+                    involved, using the <code>CdGeoLocationController</code>,
+                    its service, and the model as an example.
+                  </p>
+
+                  <h6>
+                    Step 1: The Controller - Entry Point for Read Requests
+                  </h6>
+                  <p>
+                    The <code>Get()</code> method in the
+                    <code>CdGeoLocationController</code> handles incoming
+                    requests for reading data and delegates the task to the
+                    <code>CdGeoLocationService</code>.
+                  </p>
+                  <div class="code-container">
+                    <button class="copy-btn" onclick="copyToClipboard(this)">
+                      Copy
+                    </button>
+                    <pre><code class="language-typescript">
+                    async Get(req, res) {
+                        try {
+                            await this.svCdGeoLocation.getCdGeoLocation(req, res);
+                        } catch (e) {
+                            await this.b.serviceErr(req, res, e, 'CdGeoLocationController:Get');
+                        }
+                    }
+                                    </code></pre>
+                  </div>
+
+                  <h6>Step 2: The Service - Business Logic Layer</h6>
+                  <p>
+                    The <code>getCdGeoLocation</code> method in the
+                    <code>CdGeoLocationService</code> processes the request by:
+                  </p>
+                  <ul>
+                    <li>Extracting query parameters from the request.</li>
+                    <li>
+                      Preparing a <code>serviceInput</code> object to retrieve
+                      data.
+                    </li>
+                    <li>
+                      Delegating the read operation to
+                      <code>BaseService.read()</code>.
+                    </li>
+                  </ul>
+                  <div class="code-container">
+                    <button class="copy-btn" onclick="copyToClipboard(this)">
+                      Copy
+                    </button>
+                    <pre><code class="language-typescript">
+                    async getCdGeoLocation(req, res, q = null) {
+                        if (!q) q = this.b.getQuery(req);
+                        const serviceInput = this.b.siGet(q, this);
+                        try {
+                            const data = await this.b.read(req, res, serviceInput);
+                            this.b.successResponse(req, res, data);
+                        } catch (e) {
+                            this.b.serviceErr(req, res, e, 'CdGeoLocationService:getCdGeoLocation');
+                        }
+                    }
+                                    </code></pre>
+                  </div>
+
+                  <h6>Step 3: GetCount - Specialized Read Operation</h6>
+                  <p>
+                    The <code>GetCount</code> operation is a specialized type of
+                    "read" that returns both a count of records and the data
+                    itself. This is particularly useful for implementing
+                    pagination. All modules in Corpdesk are expected to
+                    implement this operation.
+                  </p>
+
+                  <h6>Request Example</h6>
+                  <div class="code-container">
+                    <button class="copy-btn" onclick="copyToClipboard(this)">
+                      Copy
+                    </button>
+                    <pre><code class="language-json">
+                    {
+                        "ctx": "App",
+                        "m": "CdGeo",
+                        "c": "CdGeoLocation",
+                        "a": "GetCount",
+                        "dat": {
+                            "f_vals": [
+                                {
+                                    "query": {
+                                        "select": ["cdGeoLocationId", "cdGeoLocationName"],
+                                        "where": {}
+                                    }
+                                }
+                            ],
+                            "token": "08f45393-c10e-4edd-af2c-bae1746247a1"
+                        },
+                        "args": null
+                    }
+                                    </code></pre>
+                  </div>
+
+                  <h6>Pagination Example in Angular</h6>
+                  <p>
+                    The <code>GetCount</code> operation integrates seamlessly
+                    with front-end frameworks for paginated data retrieval.
+                    Below is an Angular example:
+                  </p>
+                  <div class="code-container">
+                    <button class="copy-btn" onclick="copyToClipboard(this)">
+                      Copy
+                    </button>
+                    <pre><code class="language-typescript">
+                    const q: IQuery = {
+                        select: ['cdGeoLocationId', 'cdGeoLocationName'],
+                        where: searchFields(term, SEARCH_FIELDS),
+                        take: 10,
+                        skip: resetSkip ? 0 : this.currentPage * 10,
+                    };
+                                    </code></pre>
+                  </div>
+
+                  <h6>Controller Implementation</h6>
+                  <p>
+                    The <code>GetCount</code> method in the controller forwards
+                    the request to the service layer:
+                  </p>
+                  <div class="code-container">
+                    <button class="copy-btn" onclick="copyToClipboard(this)">
+                      Copy
+                    </button>
+                    <pre><code class="language-typescript">
+                    async GetCount(req, res) {
+                        try {
+                            await this.svCdGeoLocation.getCdGeoLocationCount(req, res);
+                        } catch (e) {
+                            await this.b.serviceErr(req, res, e, 'CdGeoLocationController:GetCount');
+                        }
+                    }
+                                    </code></pre>
+                  </div>
+
+                  <h6>Service Implementation</h6>
+                  <p>
+                    The service layer prepares the query and delegates the task
+                    to <code>BaseService.readCount()</code>:
+                  </p>
+                  <div class="code-container">
+                    <button class="copy-btn" onclick="copyToClipboard(this)">
+                      Copy
+                    </button>
+                    <pre><code class="language-typescript">
+                    async getCdGeoLocationCount(req, res) {
+                        const q = this.b.getQuery(req);
+                        const serviceInput = {
+                            serviceModel: CdGeoLocationModel,
+                            docName: 'CdGeoLocationService::getCdGeoLocationCount',
+                            cmd: {
+                                action: 'find',
+                                query: q
+                            },
+                            dSource: 1
+                        };
+                        this.b.readCount$(req, res, serviceInput)
+                            .subscribe((r) => {
+                                this.b.successResponse(req, res, r);
+                            });
+                    }
+                                    </code></pre>
+                  </div>
+
+                  <h6>BaseService Implementation</h6>
+                  <p>
+                    The <code>BaseService</code> manages the database
+                    interaction, returning both the data and the total record
+                    count:
+                  </p>
+                  <div class="code-container">
+                    <button class="copy-btn" onclick="copyToClipboard(this)">
+                      Copy
+                    </button>
+                    <pre><code class="language-typescript">
+                    async readCount(req, res, serviceInput) {
+                        await this.init(req, res);
+                        await this.setRepo(serviceInput);
+                        const repo = this.repo;
+                        try {
+                            const [result, total] = await repo.findAndCount(serviceInput.cmd.query);
+                            return { items: result, count: total };
+                        } catch (err) {
+                            return await this.serviceErr(req, res, err, 'BaseService:readCount');
+                        }
+                    }
+                                    </code></pre>
+                  </div>
+
+                  <h6>Conclusion</h6>
+                  <p>
+                    The <code>GetCount</code> operation provides a standardized
+                    approach to retrieve data with pagination support. By
+                    adhering to Corpdesk's modular structure, it simplifies both
+                    front-end and back-end integration.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- end of card -->
+          </div>
+        </div>
+      </div>
+      <script src="assets/libs/jquery/jquery.min.js"></script>
+      <script src="assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+    </div>
+    <!-- END layout-wrapper -->
+
+    <!-- JAVASCRIPT -->
+    <script src="assets/libs/jquery/jquery.min.js"></script>
+    <script src="assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/libs/metismenu/metisMenu.min.js"></script>
+    <script src="assets/libs/simplebar/simplebar.min.js"></script>
+    <script src="assets/libs/node-waves/waves.min.js"></script>
+
+    <!-- Prism CSS -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.28.0/themes/prism.min.css"
+      rel="stylesheet"
+    />
+    <!-- Prism JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.28.0/prism.min.js"></script>
+
+    <!-- Highlight.js CSS -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/default.min.css"
+      rel="stylesheet"
+    />
+    <!-- Highlight.js JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    <script>
+      hljs.highlightAll();
+    </script>
+
+    <script src="assets/js/app.js"></script>
+    <script src="assets/js/code-button.js"></script>
+  </body>
+</html>

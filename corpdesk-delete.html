@@ -137,13 +137,13 @@
                 <div
                   class="page-title-box d-flex align-items-center justify-content-between"
                 >
-                  <h4 class="mb-0 font-size-18">Corpdesk API Documentation</h4>
+                  <h4 class="mb-0 font-size-18">API Request Processing</h4>
                   <div class="page-title-right">
                     <ol class="breadcrumb m-0">
                       <li class="breadcrumb-item">
                         <a href="javascript: void(0);">API</a>
                       </li>
-                      <li class="breadcrumb-item active">Introduction</li>
+                      <li class="breadcrumb-item">CRUD Operations</li>
                     </ol>
                   </div>
                 </div>
@@ -154,161 +154,87 @@
             <div class="card">
               <div class="card-body">
                 <div class="p-lg-3">
-                  <h5>Introduction</h5>
+                  <h5>
+                    Understanding the Delete Operation in Corpdesk Modules
+                  </h5>
+
                   <p>
-                    Corpdesk represents a cutting-edge framework for building
-                    scalable, modular, and highly automated applications. With
-                    its unique design philosophy, Corpdesk ensures consistency,
-                    simplicity, and flexibility, enabling both human developers
-                    and AI tools to interact seamlessly with its architecture.
-                    This document outlines the foundational principles,
-                    operational modes, and core components of the Corpdesk
-                    backend, focusing on its API execution strategy.
+                    The <code>Delete</code> operation removes records from the
+                    database. Below is an explanation of how it works, using the
+                    <code>CdGeoLocationController</code>, its service, and the
+                    model.
                   </p>
 
-                  <h5>Design Philosophy</h5>
-                  <ul>
-                    <li>
-                      <strong>Automation-First Approach:</strong> Corpdesk is
-                      designed to maximize automation while minimizing
-                      dependencies.
-                    </li>
-                    <li>
-                      <strong>Language-Agnostic Implementation:</strong> Designs
-                      can be transformed into multiple programming languages.
-                    </li>
-                    <li>
-                      <strong>Consistency and Simplicity:</strong> Centralized
-                      API interactions promote maintainability.
-                    </li>
-                    <li>
-                      <strong>Uniform Entry Points:</strong> The API uses a
-                      single entry point with all requests formatted as JSON
-                      POST data.
-                    </li>
-                  </ul>
-
-                  <h5>API Operational Concepts</h5>
-                  <table class="table table-bordered table-striped">
-                    <thead>
-                        <tr>
-                            <th style="width: 20%;">Concept</th>
-                            <th>Description</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>No Client-Side Routes</strong></td>
-                            <td>All calls are sent to a single <strong>endpoint</strong>.</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Standardized API Calls</strong></td>
-                            <td>Requests are structured using <strong>standardized interfaces</strong>.</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Service Initialization</strong></td>
-                            <td>Services use <code>new()</code> without <em>dependency injection</em>.</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Environment-Aware Execution</strong></td>
-                            <td>Configurations for <strong>CORS</strong>, <strong>SSL</strong>, and <strong>database connections</strong> are handled seamlessly.</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Language-Oriented Requests</strong></td>
-                            <td>
-                                The API is designed to follow a <strong>"human-language-oriented"</strong> approach, ensuring consistency in communication patterns across all modules. Once a developer understands how to interact with one module, the same principles apply universally. Adherence to these patterns discourages <em>anti-patterns</em> in the <code>ICdRequest</code> structure. Furthermore, responses are designed to be <strong>predictable</strong> and <strong>consistent</strong>, promoting seamless integration and ease of use.
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-                
-                
-                
-
-                  <h5>Core Interfaces</h5>
-                  <h6>ICdRequest</h6>
+                  <h6>
+                    Step 1: The Controller - Entry Point for Delete Requests
+                  </h6>
                   <p>
-                    The <code>ICdRequest</code> interface standardizes how
-                    requests are structured:
+                    The <code>Delete()</code> method in the
+                    <code>CdGeoLocationController</code> handles delete requests
+                    and forwards them to the <code>CdGeoLocationService</code>.
+                  </p>
+                  <div class="code-container">
+                    <button class="copy-btn" onclick="copyToClipboard(this)">
+                      Copy
+                    </button>
+                    <pre><code class="language-typescript">
+                      async Delete(req, res) {
+                          try {
+                              await this.svCdGeoLocation.delete(req, res);
+                          } catch (e) {
+                              await this.b.serviceErr(req, res, e, 'CdGeoLocationController:Delete');
+                          }
+                      }
+                                      </code></pre>
+                  </div>
+
+                  <h6>Step 2: The Service - Business Logic Layer</h6>
+                  <p>
+                    The <code>delete</code> method in the
+                    <code>CdGeoLocationService</code>:
                   </p>
                   <ul>
                     <li>
-                      <code>ctx:</code> Specifies the target module's location.
-                    </li>
-                    <li><code>m:</code> Module name.</li>
-                    <li><code>c:</code> Controller name.</li>
-                    <li>
-                      <code>a:</code> Action to execute within the controller.
+                      Extracts the deletion criteria from the request payload.
                     </li>
                     <li>
-                      <code>dat:</code> Payload containing command settings.
+                      Prepares a <code>serviceInput</code> object for the
+                      deletion.
+                    </li>
+                    <li>
+                      Calls <code>BaseService.delete()</code> to execute the
+                      operation.
                     </li>
                   </ul>
                   <div class="code-container">
                     <button class="copy-btn" onclick="copyToClipboard(this)">
                       Copy
                     </button>
-                    <pre><code class="language-json">
-    // JSON request example:
-    {
-        "ctx": "Sys",
-        "m": "User",
-        "c": "User",
-        "a": "Login",
-        "dat": {
-            "f_vals": [
-                {
-                    "data": {
-                        "userName": "user-name",
-                        "password": "*******"
-                    }
-                }
-            ],
-            "token": null
-        },
-        "args": null
-    }
-                                    </code></pre>
+                    <pre><code class="language-typescript">
+                      async delete(req, res) {
+                          const q = this.b.getQuery(req);
+                          const serviceInput = {
+                              serviceModel: CdGeoLocationModel,
+                              cmd: { action: 'delete', query: q }
+                          };
+                          this.b.delete$(req, res, serviceInput)
+                              .subscribe((result) => {
+                                  this.b.respond(req, res, result);
+                              });
+                      }
+                                      </code></pre>
                   </div>
 
-                  <h6>ICdResponse</h6>
+                  <h6>Conclusion</h6>
                   <p>
-                    The <code>ICdResponse</code> interface ensures consistency
-                    in responses:
+                    The <code>Delete</code> operation simplifies the removal of
+                    records by leveraging the centralized logic in the
+                    <code>BaseService</code>.
                   </p>
-                  <ul>
-                    <li>
-                      <code>app_state:</code> Contains success status, error
-                      messages, and session data.
-                    </li>
-                    <li>
-                      <code>data:</code> Holds the actual response payload.
-                    </li>
-                  </ul>
-
-                  <h5>Backend Workflow</h5>
-                  <ul>
-                    <li>
-                      <strong>Initialization:</strong> The entry point launches
-                      the application and executes runtime configurations.
-                    </li>
-                    <li>
-                      <strong>Request Handling:</strong> Requests are processed,
-                      validated, executed, and responded to with structured
-                      outputs.
-                    </li>
-                  </ul>
-
-                  <h5>Future Enhancements</h5>
-                  <ul>
-                    <li>Refinements to Anti-Patterns</li>
-                    <li>AI-Driven Module Creation</li>
-                    <li>Multi-Language Support</li>
-                  </ul>
                 </div>
               </div>
-              <!-- end of card body -->
             </div>
+
             <!-- end of card -->
           </div>
         </div>

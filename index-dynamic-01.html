@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>CORPDESK | Docs</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Bootstrap Css -->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <!-- Icons Css -->
+    <link href="assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+    <!-- App Css-->
+    <link href="assets/css/app.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/workflow.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/code-button.css" rel="stylesheet" type="text/css" />
+
+
+    <!-- <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/css/icons.min.css" />
+    <link rel="stylesheet" href="assets/css/app.min.css" /> -->
+  </head>
+
+  <body data-sidebar="dark">
+    <div id="layout-wrapper">
+      <!-- Load Menu -->
+      <div class="vertical-menu" id="menu-container"></div>
+
+      <!-- Main Content -->
+      <div class="main-content">
+        <div class="page-content">
+          <div class="container-fluid">
+            <div id="content-container">
+              <!-- Default Content -->
+              <h4>Welcome to Corpdesk Docs</h4>
+              <p>Select a menu item to view content.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- JAVASCRIPT -->
+    <script src="assets/libs/jquery/jquery.min.js"></script>
+    <script src="assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- JAVASCRIPT -->
+    <script src="assets/libs/jquery/jquery.min.js"></script>
+    <script src="assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/libs/metismenu/metisMenu.min.js"></script>
+    <script src="assets/libs/simplebar/simplebar.min.js"></script>
+    <script src="assets/libs/node-waves/waves.min.js"></script>
+
+    <!-- Prism CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.28.0/themes/prism.min.css" rel="stylesheet">
+    <!-- Prism JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.28.0/prism.min.js"></script>
+
+    <!-- Highlight.js CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/default.min.css" rel="stylesheet">
+    <!-- Highlight.js JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+
+
+
+    <script src="assets/js/app.js"></script>
+    <script src="assets/js/code-button.js"></script>
+    <script>
+      // Load menu from `menu.html`
+      document.getElementById("menu-container").innerHTML = `
+            <object type="text/html" data="menu.html" style="width: 100%; height: 100%;"></object>
+        `;
+
+      // Function to load content dynamically
+      function loadContent(page) {
+        const content = document.getElementById("content-container");
+        content.classList.remove("loaded");
+        fetch(page)
+          .then((response) => response.text())
+          .then((html) => {
+            content.innerHTML = html;
+            content.classList.add("loaded");
+          })
+          .catch((error) => {
+            content.innerHTML = "<p>Error loading page.</p>";
+            content.classList.add("loaded");
+          });
+      }
+    </script>
+  </body>
+</html>

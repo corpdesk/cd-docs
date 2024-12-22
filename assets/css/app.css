@@ -850,3 +850,13 @@ body[data-sidebar-size="small"].vertical-collpsed .footer {
   font-size: .8rem;
   font-weight: 500;
   padding: 10px 20px; }
+
+/* for dynamic page loading */
+#content-container {
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+#content-container.loaded {
+  opacity: 1;
+}
+
